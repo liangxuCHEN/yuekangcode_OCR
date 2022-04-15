@@ -25,8 +25,7 @@ def file_process(file_path):
 def get_ocr_data(test_img_path):
     # 加载移动端预训练模型
     ocr = hub.Module(name="chinese_ocr_db_crnn_mobile")  # 移动端级别
-    # ocr = hub.Module(name="chinese_ocr_db_crnn_server")  # 服务器级别
-    # 读取测试文件夹test.txt中的照片路径
+    # 读取照片路径
     np_images = [cv2.imread(image_path) for image_path in test_img_path]
 
     return ocr.recognize_text(
@@ -36,13 +35,6 @@ def get_ocr_data(test_img_path):
         visualization=False,  # 是否将识别结果保存为图片文件；
         box_thresh=0.6,  # 检测文本框置信度的阈值；
         text_thresh=0.7)  # 识别中文文本置信度的阈值；
-
-    # for result in results:
-    #     data = result['data']
-    #     # save_path = result['save_path']
-    #     for infomation in data:
-    #         print('text: ', infomation['text'], '\nconfidence: ', infomation['confidence'], '\ntext_box_position: ',
-    #               infomation['text_box_position'])
 
 
 if __name__ == '__main__':
@@ -74,7 +66,6 @@ if __name__ == '__main__':
 
             if info_idx == begin_id + 2:
                 # 姓名
-                # print(infomation['text'], infomation['text_box_position'])
                 person_res.append(infomation['text'])
             elif info_idx == begin_id + 4:
                 # 截图时间

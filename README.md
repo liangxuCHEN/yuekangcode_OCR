@@ -4,10 +4,13 @@
 
 ### 环境
 paddle: paddlepaddle 2.2.2 cpu version
+
 PaddleHub: 使用了chinese_ocr_db_crnn_mobile模型
 
 详细资料：
+
 https://www.paddlepaddle.org.cn/
+
 https://www.paddlepaddle.org.cn/hub
 
 ### 脚本命令
